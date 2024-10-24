@@ -47,7 +47,7 @@ def main(file_backups_dir: Path, to_git_dir: Path) -> None:
     This converts the data from file_backups modules from HPI to git-tracked directory
 
     Once a directory has been converted, it is meant to be updated with
-    https://github.com/seanbreckenridge/git_doc_history
+    https://github.com/purarue/git_doc_history
 
     Expects arctee-like files as input -- takes the date the file was backed up
     and creates a git commit in TO_GIT_DIR with that date. This dedupes the
@@ -61,7 +61,7 @@ def main(file_backups_dir: Path, to_git_dir: Path) -> None:
         dt = _parse_arctee_datetime_format(f.stem)
         if "-" in f.stem:
             # if filename has - in it, use it as the filename
-            # e.g.: /home/sean/data/todotxt/20220309T072345Z-todo.txt
+            # e.g.: /home/username/data/todotxt/20220309T072345Z-todo.txt
             use_filename = f.stem.split("-")[1].strip()
         elif use_filename is None:
             use_filename = click.prompt(

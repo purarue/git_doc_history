@@ -2,7 +2,7 @@
 
 Copy and track files in `git`, and a library to traverse the history
 
-I use this to track my [`todo.txt`](https://github.com/todotxt/todo.txt-cli) files, changes to configuration files, any shell histories which don't support timestamps (see all of my config files [here](https://github.com/seanbreckenridge/dotfiles/tree/master/.config/git_doc_history))
+I use this to track my [`todo.txt`](https://github.com/todotxt/todo.txt-cli) files, changes to configuration files, any shell histories which don't support timestamps (see all of my config files [here](https://github.com/purarue/dotfiles/tree/master/.config/git_doc_history))
 
 This copies the files to a different directory, so it doesn't interfere with the application/configuration
 
@@ -10,7 +10,7 @@ By copying those files to a separate directory, I can always roll back to previo
 
 For shell histories/files which are unique lines of text (e.g., my `todo.txt` file) this also lets me estimate timestamps for when new lines were added to the history/text files, using the `iter_commit_snapshots` and `parse_snapshot_diffs` below, which emits added/removed events for individual lines with estimated times
 
-This was mostly created for [HPI](https://github.com/seanbreckenridge/HPI), so I don't have to rewrite the code to extract lines for git history over and over
+This was mostly created for [HPI](https://github.com/purarue/HPI), so I don't have to rewrite the code to extract lines for git history over and over
 
 This is a general purpose solution for tracking file history in `git` -- so its not extremely opinionated. In some cases it can be seen as a stop-gap solution, to have some file versioning in case you ever want to roll back. It may work particularly well for basic files with a couple dozen lines (e.g. I use it for RSS feeds, `todo.txt`, bookmarks, and a couple history files)
 
@@ -48,13 +48,13 @@ $ git_doc_history todo
 
 ```
 Generated configuration:
-SOURCE_DIR: /home/sean/data/todo
-BACKUP_DIR: /home/sean/data/todo_git_history
+SOURCE_DIR: /home/username/data/todo
+BACKUP_DIR: /home/username/data/todo_git_history
 COPY_FILES: todo.txt
 done.txt
-'/home/sean/data/todo/todo.txt' -> '/home/sean/data/todo_git_history/todo.txt'
-'/home/sean/data/todo/done.txt' -> '/home/sean/data/todo_git_history/done.txt'
-'/home/sean/data/todo/.gitignore' -> '/home/sean/data/todo_git_history/.gitignore'
+'/home/username/data/todo/todo.txt' -> '/home/username/data/todo_git_history/todo.txt'
+'/home/username/data/todo/done.txt' -> '/home/username/data/todo_git_history/done.txt'
+'/home/username/data/todo/.gitignore' -> '/home/username/data/todo_git_history/.gitignore'
 [master f927490] update
  1 file changed, 1 insertion(+)
  create mode 100644 .gitignore
@@ -131,7 +131,7 @@ In this case, 'removed' would mean I either changed the text on the line, or (mo
 ### Tests
 
 ```bash
-git clone 'https://github.com/seanbreckenridge/git_doc_history'
+git clone 'https://github.com/purarue/git_doc_history'
 cd ./git_doc_history
 pip install '.[testing]'
 pytest

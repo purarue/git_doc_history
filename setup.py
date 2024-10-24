@@ -8,9 +8,8 @@ pkg = "git_doc_history"
 setup(
     name=pkg,
     version="0.1.1",
-    url="https://github.com/seanbreckenridge/git_doc_history",
-    author="Sean Breckenridge",
-    author_email="seanbrecke@gmail.com",
+    url="https://github.com/purarue/git_doc_history",
+    author="purarue",
     description=(
         """copy/track files in git, and a CLI tool/library to traverse the history"""
     ),
