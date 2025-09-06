@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "git_doc_history"
+version = "0.1.1"
+description = "copy/track files in git, and a CLI tool/library to traverse the history"
+authors = [{ name = "purarue" }]
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.9"
+keywords = ["data", "git"]
+classifiers = [
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+
+dependencies = ["gitpython", "dateparser", "click>=8.0", "python-dotenv"]
+
+[project.optional-dependencies]
+testing = ["pytest", "mypy", "flake8"]
+
+[project.urls]
+Homepage = "https://github.com/purarue/git_doc_history"
+
+[tool.setuptools]
+packages = ["git_doc_history"]
+zip-safe = false
+
+[tool.setuptools.package-data]
+git_doc_history = ["py.typed"]
