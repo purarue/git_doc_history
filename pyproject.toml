@@ -10,12 +10,11 @@ authors = [{ name = "purarue" }]
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 keywords = ["data", "git"]
 classifiers = [
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
@@ -40,7 +39,7 @@ git_doc_history = ["py.typed"]
 [tool.mypy]
 pretty = true
 show_error_context = true
-show_error_codes   = true
+show_error_codes = true
 check_untyped_defs = true
 namespace_packages = true
 disallow_any_generics = true

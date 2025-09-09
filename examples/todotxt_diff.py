@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-from typing import List
 from functools import cached_property
 
 import pytodotxt  # type: ignore[import]
@@ -29,7 +28,7 @@ class TaskHashable(pytodotxt.Task):
         return not self.__eq__(other)
 
 
-def parse_into_todos(doc: DocHistorySnapshot) -> List[TaskHashable]:
+def parse_into_todos(doc: DocHistorySnapshot) -> list[TaskHashable]:
     # pytodotxt.TodoTxtParser accepts bytes as inputs
     tasks = pytodotxt.TodoTxtParser(task_type=TaskHashable).parse(doc.data)
     return tasks

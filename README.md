@@ -16,7 +16,7 @@ This is a general purpose solution for tracking file history in `git` -- so its 
 
 ## Installation
 
-Requires `python3.9+`
+Requires `python3.10+`
 
 To install with pip, run:
 

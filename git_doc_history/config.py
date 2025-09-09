@@ -1,7 +1,7 @@
 import sys
 import os
 from pathlib import Path
-from typing import Dict, Union
+from typing import Union
 
 import click
 from dotenv import dotenv_values
@@ -27,8 +27,8 @@ def resolve_config(path: str) -> Path:
     return conf
 
 
-def parse_config(input_file: Union[Path, str]) -> Dict[str, str]:
-    res: Dict[str, str] = {}
+def parse_config(input_file: Union[Path, str]) -> dict[str, str]:
+    res: dict[str, str] = {}
     for k, v in dotenv_values(Path(input_file)).items():
         assert v is not None
         if os.linesep not in v and k != "COPY_FILES":

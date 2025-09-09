@@ -14,7 +14,7 @@ assert script.exists()
 
 
 def test_git_doc_history() -> None:
-    subprocess.run(shlex.split("bash -x {}".format(script))).check_returncode()
+    subprocess.run(shlex.split(f"bash -x {script}")).check_returncode()
     assert git_dir.exists(), "call from_filebackups_test first"
 
     cc = conf.parse_config(conf.resolve_config(str(this_dir / "config")))

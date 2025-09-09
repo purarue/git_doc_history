@@ -3,14 +3,11 @@ from pathlib import Path
 from typing import (
     NamedTuple,
     Literal,
-    List,
-    Dict,
-    Set,
     Any,
     Optional,
-    Iterator,
     Callable,
 )
+from collections.abc import Iterator
 from datetime import datetime
 
 from git.repo import Repo
@@ -41,11 +38,11 @@ class DocHistory(NamedTuple):
     """
 
     backup_dir: Path
-    copy_files: List[str]
+    copy_files: list[str]
     source_dir: Optional[Path] = None
 
     @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> "DocHistory":
+    def from_dict(cls, data: dict[str, Any]) -> "DocHistory":
         return cls(
             source_dir=Path(data["SOURCE_DIR"]).expanduser().absolute(),
             backup_dir=Path(data["BACKUP_DIR"]).expanduser().absolute(),
@@ -83,7 +80,7 @@ class DocHistory(NamedTuple):
 
     def list_commit_snapshots(
         self, file: str, reverse: bool = False
-    ) -> List[DocHistorySnapshot]:
+    ) -> list[DocHistorySnapshot]:
         items = list(self.iter_commit_snapshots(file))
         if reverse:
             items = list(reversed(items))
@@ -126,7 +123,7 @@ class Diff(NamedTuple):
         return f"{self.action} {datetime.fromtimestamp(self.epoch_time)} {self.data}"
 
 
-def parse_lines(snapshot: DocHistorySnapshot) -> List[str]:
+def parse_lines(snapshot: DocHistorySnapshot) -> list[str]:
     """
     The most basic parse_func -- decodes to text and returns a list of lines
     """
@@ -136,7 +133,7 @@ def parse_lines(snapshot: DocHistorySnapshot) -> List[str]:
 def parse_snapshot_diffs(
     doc: "DocHistory",
     file: str,
-    parse_func: Optional[Callable[[DocHistorySnapshot], List[Any]]] = None,
+    parse_func: Optional[Callable[[DocHistorySnapshot], list[Any]]] = None,
 ) -> Iterator[Diff]:
     """
     Iterates through the git history in chronological order, keeping track
@@ -151,11 +148,11 @@ def parse_snapshot_diffs(
     if parse_func is None:
         parse_func = parse_lines
     data = doc.list_commit_snapshots(file=file, reverse=True)
-    state: Set[Any] = set()
+    state: set[Any] = set()
 
     for snapshot in data:
         # parse the data using the func
-        snapshot_data: List[Any] = parse_func(snapshot)
+        snapshot_data: list[Any] = parse_func(snapshot)
         snapshot_set = set()
         # e.g. iterate over lines -- or whatever data was parsed
         for sn in snapshot_data:
