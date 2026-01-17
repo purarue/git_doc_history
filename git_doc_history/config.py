@@ -1,7 +1,6 @@
 import sys
 import os
 from pathlib import Path
-from typing import Union
 
 import click
 from dotenv import dotenv_values

@@ -4,7 +4,6 @@ from typing import (
     NamedTuple,
     Literal,
     Any,
-    Optional,
 )
 from collections.abc import Callable
 from collections.abc import Iterator
