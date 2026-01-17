@@ -5,8 +5,8 @@ from typing import (
     Literal,
     Any,
     Optional,
-    Callable,
 )
+from collections.abc import Callable
 from collections.abc import Iterator
 from datetime import datetime
 
@@ -39,7 +39,7 @@ class DocHistory(NamedTuple):
 
     backup_dir: Path
     copy_files: list[str]
-    source_dir: Optional[Path] = None
+    source_dir: Path | None = None
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "DocHistory":
@@ -94,7 +94,7 @@ class DocHistory(NamedTuple):
             at.tzinfo is None
         ), "Datetime must be naive -- to compare with sorted commits"
         # default to first commit -- latest
-        commit: Optional[Commit] = None
+        commit: Commit | None = None
         for comm in self.repo().iter_commits():
             if commit is None:
                 commit = comm
@@ -133,7 +133,7 @@ def parse_lines(snapshot: DocHistorySnapshot) -> list[str]:
 def parse_snapshot_diffs(
     doc: "DocHistory",
     file: str,
-    parse_func: Optional[Callable[[DocHistorySnapshot], list[Any]]] = None,
+    parse_func: Callable[[DocHistorySnapshot], list[Any]] | None = None,
 ) -> Iterator[Diff]:
     """
     Iterates through the git history in chronological order, keeping track

@@ -27,7 +27,7 @@ def resolve_config(path: str) -> Path:
     return conf
 
 
-def parse_config(input_file: Union[Path, str]) -> dict[str, str]:
+def parse_config(input_file: Path | str) -> dict[str, str]:
     res: dict[str, str] = {}
     for k, v in dotenv_values(Path(input_file)).items():
         assert v is not None
